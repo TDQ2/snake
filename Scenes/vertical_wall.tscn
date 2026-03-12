@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://llwksj5to4wy"]
+
+[ext_resource type="Texture2D" uid="uid://b8ayu3y2ne7po" path="res://Sprites/Background/wall.png" id="1_ywl5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5qoj"]
+size = Vector2(20, 360)
+
+[node name="VerticalWall" type="StaticBody2D" groups=["vertical_wall"]]
+collision_mask = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 360)
+texture = ExtResource("1_ywl5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v5qoj")

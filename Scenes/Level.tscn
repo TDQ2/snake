@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://w7256lan0sue"]
+
+[ext_resource type="Texture2D" uid="uid://duo17j7pnr7dn" path="res://Sprites/Background/light-brown-background.png" id="1_xylue"]
+[ext_resource type="PackedScene" uid="uid://dsxg54vobliv2" path="res://Scenes/player.tscn" id="2_8rbpu"]
+[ext_resource type="PackedScene" uid="uid://d1kv15fgkif2y" path="res://Scenes/horizontal_wall.tscn" id="3_fuudy"]
+[ext_resource type="PackedScene" uid="uid://llwksj5to4wy" path="res://Scenes/vertical_wall.tscn" id="4_xylue"]
+[ext_resource type="PackedScene" uid="uid://dml3oi6mssxhw" path="res://Scenes/Children/basic_enemy.tscn" id="5_xylue"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(640, 360)
+texture = ExtResource("1_xylue")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="HorizontalWall" parent="Walls" instance=ExtResource("3_fuudy")]
+position = Vector2(320, 10)
+
+[node name="HorizontalWall2" parent="Walls" instance=ExtResource("3_fuudy")]
+position = Vector2(320, 350)
+
+[node name="VerticalWall" parent="Walls" instance=ExtResource("4_xylue")]
+position = Vector2(10, 180)
+
+[node name="VerticalWall2" parent="Walls" instance=ExtResource("4_xylue")]
+position = Vector2(630, 180)
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" parent="Characters" instance=ExtResource("2_8rbpu")]
+position = Vector2(144, 129)
+
+[node name="BasicEnemy" parent="Characters" instance=ExtResource("5_xylue")]
+position = Vector2(482, 236)
+rotation = -3.1415927

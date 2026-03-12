@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dml3oi6mssxhw"]
+
+[ext_resource type="PackedScene" uid="uid://bp3rjf53ptosr" path="res://Scenes/Bases/enemy.tscn" id="1_3gway"]
+[ext_resource type="Script" uid="uid://d3knlgw1yyknb" path="res://Scripts/Children/basic_enemy.gd" id="2_e6u71"]
+[ext_resource type="Texture2D" uid="uid://c6pq7fp65ijpi" path="res://Sprites/Enemies/enemy-8.png" id="3_tfprl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfprl"]
+radius = 4.0
+height = 16.0
+
+[node name="BasicEnemy" instance=ExtResource("1_3gway")]
+script = ExtResource("2_e6u71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" groups=["enemies"]]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tfprl")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_tfprl")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvk7gosetyfup"]
+
+[ext_resource type="Script" uid="uid://bq11ar1nppsn0" path="res://Scripts/Bases/segment.gd" id="1_5o1ws"]
+
+[node name="Segment" type="Area2D" groups=["segment"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_5o1ws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

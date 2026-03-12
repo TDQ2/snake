@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2wlagrk76dh0"]
+
+[ext_resource type="PackedScene" uid="uid://cvk7gosetyfup" path="res://Scenes/Bases/segment.tscn" id="1_jkvy2"]
+[ext_resource type="Script" uid="uid://befybgjhv1qvj" path="res://Scripts/Children/orange_segment.gd" id="2_he0kn"]
+[ext_resource type="Texture2D" uid="uid://dedog3it6gn7d" path="res://Sprites/Player/orange-8.png" id="3_e22ot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_he0kn"]
+radius = 4.0
+
+[node name="OrangeSegment" instance=ExtResource("1_jkvy2")]
+script = ExtResource("2_he0kn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_he0kn")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_e22ot")

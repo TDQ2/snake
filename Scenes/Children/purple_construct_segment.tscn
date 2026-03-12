@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2h6ak7qwr85"]
+
+[ext_resource type="PackedScene" uid="uid://cvk7gosetyfup" path="res://Scenes/Bases/segment.tscn" id="1_2rq04"]
+[ext_resource type="Texture2D" uid="uid://bm7ujwlex8fuo" path="res://Sprites/Player/purple-construct.png" id="2_fpvcb"]
+
+[node name="PurpleConstructSegment" instance=ExtResource("1_2rq04")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fpvcb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-1, -5, 1, -5, 5, -1, 5, 0, 4, 1, 4, 5, -4, 5, -4, 1, -5, 0, -5, -1)

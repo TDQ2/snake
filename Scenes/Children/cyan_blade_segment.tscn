@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4tsiq4hqqpq"]
+
+[ext_resource type="PackedScene" uid="uid://cvk7gosetyfup" path="res://Scenes/Bases/segment.tscn" id="1_hfjs6"]
+[ext_resource type="Texture2D" uid="uid://djmo2wrbiehly" path="res://Sprites/Player/cyan-blade.png" id="2_87pcn"]
+
+[node name="CyanBladeSegment" instance=ExtResource("1_hfjs6")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_87pcn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-2, -5, -1, -5, 1, -3, 2, -1, 2, 3, 4, 3, 4, 4, 2, 4, 2, 5, -1, 5, -1, 4, -3, 4, -3, 3, -1, 3, -2, 0)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b202kef61ydiv"]
+
+[ext_resource type="PackedScene" uid="uid://cvk7gosetyfup" path="res://Scenes/Bases/segment.tscn" id="1_8mnhg"]
+[ext_resource type="Texture2D" uid="uid://dkpdwutsdkecs" path="res://Sprites/Player/yellow-symmetry.png" id="2_q7mc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_567e6"]
+size = Vector2(10, 10)
+
+[node name="YellowSymmetrySegment" instance=ExtResource("1_8mnhg")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q7mc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_567e6")
