@@ -49,6 +49,7 @@ func _ready() -> void:
 		add_child(segment)
 		segment.connect("horizontal_bounce", horizontal_bounce)
 		segment.connect("vertical_bounce", vertical_bounce)
+		segment.connect("died", kill_segment)
 	head = segments[0]
 	segments[0].is_head = true
 	
@@ -56,8 +57,8 @@ func _ready() -> void:
 	path.fill(Vector2.ZERO)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("test"):
-		kill_segment(0)
+	#if Input.is_action_just_pressed("test"):
+		#kill_segment(0)
 	
 	_update_head()
 	_handle_movement_input()
@@ -76,7 +77,7 @@ func _handle_movement_input() -> void:
 		direction = direction.rotated(-rotation_speed)
 	elif Input.is_action_pressed("right"):
 		direction = direction.rotated(rotation_speed)
-	head.rotation = direction.angle()
+	head.rotation = direction.angle() + PI / 2
 
 func _update_path(curr_head: Segment) -> void:
 	last_recorded_position = curr_head.position
@@ -99,13 +100,13 @@ func _move_following_segments() -> void:
 				segment.look_at(path[curr_segment_next_idx] + position)
 				segment.rotation += PI / 2
 
-func kill_segment(idx: int) -> void:
-	var segment = segments[idx]
+func kill_segment(segment: Segment) -> void:
+	var idx = segments.find(segment)
+	assert(idx >= 0 and idx <segments.size())
 	for i in range(idx + 1, segments.size()):
 		segments[i].position = segments[i - 1].position
 	segments.remove_at(idx)
 	segment.queue_free()
-
 
 
 #Signal handlers
