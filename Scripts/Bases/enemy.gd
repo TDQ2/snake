@@ -2,7 +2,6 @@ extends Area2D
 class_name Enemy
 
 @onready var player := Game.player
-@onready var health_bar := $HealthBar
 
 # Movement config
 @export var speed := 50.0
@@ -17,6 +16,10 @@ var knockback_decay := 500.0
 var chase_velocity: Vector2
 var knockback_velocity := Vector2.ZERO
 
+# Game Stats
+var max_health := 100
+var curr_health := 100.0
+
 func _physics_process(delta: float) -> void:
 	direction = (player.head.global_position - global_position).normalized()
 	look_at(player.head.global_position)
@@ -25,9 +28,9 @@ func _physics_process(delta: float) -> void:
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 
 func _on_area_entered(area: Area2D) -> void:
-	print("hit player")
 	if area.is_in_group("segment"):
 		_apply_knockback((global_position - area.global_position).normalized())
+		_take_damage(10)
 
 func _apply_knockback(knockback_dir: Vector2) -> void:
 	knockback_direction = knockback_dir
@@ -38,3 +41,15 @@ func _on_body_entered(body: StaticBody2D) -> void:
 		_apply_knockback(direction.reflect(Vector2.UP))
 	elif body.is_in_group("vertical_wall"):
 		_apply_knockback(direction.reflect(Vector2.RIGHT))
+
+func _take_damage(amount: float) -> void:
+	curr_health -= amount
+	if(curr_health <= 0):
+		_died()
+		return
+	$HealthBar/ProgressBar.value = curr_health / max_health
+	if "show_health" in $HealthBar:
+		$HealthBar.show_health()
+
+func _died() -> void:
+	call_deferred("queue_free")

@@ -1,20 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl8gidfqxsewl"]
+[gd_scene load_steps=4 format=3 uid="uid://336plj13jl4k"]
 
-[ext_resource type="Script" uid="uid://bvcbwn062muoi" path="res://Scripts/health_bar.gd" id="1_78m4n"]
+[ext_resource type="Script" uid="uid://dufi1x0j67cjj" path="res://Scripts/health_bar.gd" id="1_78m4n"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl3mn"]
-bg_color = Color(0.8201317, 0.014737203, 5.7756904e-07, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m34ix"]
+bg_color = Color(0.8784314, 0.14117648, 0.015686275, 1)
+corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78m4n"]
-bg_color = Color(0, 0.7037137, 0.16073492, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qay8w"]
+bg_color = Color(0.05738639, 0.55275995, 1.92523e-07, 1)
+corner_detail = 1
 
-[node name="HealthBar" type="ProgressBar"]
-custom_minimum_size = Vector2(10, 3)
+[node name="HealthBar" type="Node2D"]
+script = ExtResource("1_78m4n")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(10, 0)
 offset_right = 10.0
-offset_bottom = 4.0
-theme_override_styles/background = SubResource("StyleBoxFlat_dl3mn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_78m4n")
+offset_bottom = 2.0
+theme_override_styles/background = SubResource("StyleBoxFlat_m34ix")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qay8w")
 max_value = 1.0
 value = 1.0
 show_percentage = false
-script = ExtResource("1_78m4n")
+
+[node name="VisibleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="VisibleTimer" to="." method="_on_visible_timer_timeout"]
