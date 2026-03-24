@@ -57,9 +57,6 @@ func _ready() -> void:
 	path.fill(Vector2.ZERO)
 
 func _physics_process(delta: float) -> void:
-	#if Input.is_action_just_pressed("test"):
-		#kill_segment(0)
-	
 	_update_head()
 	_handle_movement_input()
 	head.position += direction * speed * delta
@@ -100,6 +97,7 @@ func _move_following_segments() -> void:
 				segment.look_at(path[curr_segment_next_idx] + position)
 				segment.rotation += PI / 2
 
+#Signal handler
 func kill_segment(segment: Segment) -> void:
 	var idx = segments.find(segment)
 	assert(idx >= 0 and idx <segments.size())
@@ -108,8 +106,6 @@ func kill_segment(segment: Segment) -> void:
 	segments.remove_at(idx)
 	segment.queue_free()
 
-
-#Signal handlers
 func horizontal_bounce() -> void:
 	direction = direction.reflect(Vector2.RIGHT)
 
