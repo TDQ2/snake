@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SNKRX-2"
-run/main_scene="uid://w7256lan0sue"
+run/main_scene="uid://bny2maw33fo7a"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
