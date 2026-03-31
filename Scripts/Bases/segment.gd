@@ -19,10 +19,14 @@ func _on_body_entered(body: Node2D) -> void:
 			emit_signal("horizontal_bounce")
 		elif body.is_in_group("vertical_wall"):
 			emit_signal("vertical_bounce")
+		else:
+			assert(false) # should never be reached
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
 		_take_damage(20.0)
+	else:
+		assert(false) # should never be reached
 
 func _take_damage(amount: float) -> void:
 	curr_health -= amount

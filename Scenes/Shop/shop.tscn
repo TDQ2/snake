@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://b75nr0o57fp5m"]
+
+[ext_resource type="Script" uid="uid://dbjaliaayoxl0" path="res://Scripts/Shop/shop.gd" id="1_78vcx"]
+[ext_resource type="PackedScene" uid="uid://17ca6j1orsql" path="res://Scenes/Shop/seg_shop_button.tscn" id="2_dqdqq"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_78vcx")
+
+[node name="SelectionHBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SegShopButton" parent="SelectionHBox" instance=ExtResource("2_dqdqq")]
+layout_mode = 2
+
+[node name="SegShopButton2" parent="SelectionHBox" instance=ExtResource("2_dqdqq")]
+layout_mode = 2
+
+[node name="SegShopButton3" parent="SelectionHBox" instance=ExtResource("2_dqdqq")]
+layout_mode = 2
+
+[node name="PurchaseVBox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 1.0
+anchor_right = 0.1
+anchor_bottom = 1.0
+offset_left = 6.4000006
+offset_top = -75.0
+offset_right = 81.4
+grow_vertical = 0
+
+[node name="Gold" type="Label" parent="PurchaseVBox"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Gold: 5"
+horizontal_alignment = 1
+
+[node name="Reroll" type="Button" parent="PurchaseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Reroll"
+
+[node name="StartRound" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.98
+anchor_top = 0.98
+anchor_right = 0.98
+anchor_bottom = 0.98
+offset_left = -46.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start"
+
+[connection signal="pressed" from="PurchaseVBox/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="pressed" from="StartRound" to="." method="_on_start_round_pressed"]
