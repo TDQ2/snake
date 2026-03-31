@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cee0kdesuvr5j"]
 
 [ext_resource type="PackedScene" uid="uid://cvk7gosetyfup" path="res://Scenes/Bases/segment.tscn" id="1_fh3g0"]
-[ext_resource type="Script" uid="uid://dhaqw3je54mly" path="res://Scenes/Children/black_heavy_segment.gd" id="2_5m7d2"]
+[ext_resource type="Script" uid="uid://dhaqw3je54mly" path="res://Scripts/Children/black_heavy_segment.gd" id="2_5m7d2"]
 [ext_resource type="Texture2D" uid="uid://i48flm0ulr16" path="res://Sprites/Player/black-heavy.png" id="2_iile4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m7d2"]
